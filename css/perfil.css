@@ -1,0 +1,27 @@
+i, a
+{
+	color: inherit;
+}
+.fd-perfil
+{
+	height: 300px;
+	filter: brightness(50%);
+	margin-bottom: 1rem;
+}
+.card-img-overlay
+{
+	padding-top: 5rem;
+}
+.card-img-overlay h4
+{
+	color: #fff !important;
+	margin-top: 2rem;
+}
+
+@media (min-width: 900px)
+{
+	.card-img-overlay img
+	{
+		width: 70% !important;
+	}
+}

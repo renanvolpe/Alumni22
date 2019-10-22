@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+body
+{
+	background: #f1f1f1;
+	font-family: 'Nunito', sans-serif;
+}
+input:focus,select:focus,textarea:focus
+{
+	box-shadow: none !important;
+	outline: none !important;
+	
+}
+a:hover
+{
+	text-decoration: none;
+	color: inherit;
+}
+.input-group-preppend
+{
+	width: 100% !important;
+}
+#cardLogin
+{
+	padding-top: 4rem!important;
+	padding-bottom: 4rem !important;
+}
+.btn-alumni {
+  color: #1c2540;
+  background: none;
+  border: 2px solid #1c2540;
+  transition: background 0.5s;
+}
+.btn-alumni:hover
+{
+	color: #fff;
+  	background: #1c2540;
+}
+
+.btn-alumni:focus, .btn-alumni.focus {
+  box-shadow: none;
+}
+.card-header
+{
+	background: linear-gradient(to right, #0b132b,#3b506b);
+	color: #fff;
+}
+.text-blue
+{
+	color: #3b506b;
+}
+.text-orange
+{
+	color: #c46f3a;
+}
+.mg-t-3
+{
+	margin-top: 3rem;
+}
+.mg-t-5
+{
+	margin-top: 5rem;
+}
+.input-group:focus-within i {
+  color: #3b506b !important;
+}

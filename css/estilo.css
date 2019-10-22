@@ -1,0 +1,163 @@
+.icone-direita
+{
+	float: right;
+	margin-top: 0.3rem;
+	margin-right: 1rem;
+}
+#barra-superior
+{
+	background:#fff;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+	padding: 1.2% 1% 0.5% 1%;
+	margin: 0;
+}
+.pesquisa
+{
+	border:1px solid #CED4DA;
+	padding-top: 0.2%;
+	padding-bottom: 0.2%;
+	border-radius: 3px;
+}
+.pesquisa:focus-within
+{
+	box-shadow: 0 1px 10px rgba(206, 212, 218, 0.6);
+}
+.pesquisa .form-group
+{
+	margin-bottom: 0;
+}
+.pesquisa .form-group input
+{
+	border: none !important;
+}
+.pesquisa .form-group input:focus,.pesquisa button:focus
+{
+	box-shadow: none;
+	outline: 0;
+}
+.pesquisa button
+{
+	background: none;
+	border: none;
+	padding: .375rem .75rem;
+}
+.pesquisa button i
+{
+	color: #CED4DA;
+}
+nav
+{
+	height: 100vh;
+	background: #2C323E;
+	position: fixed !important;
+	top:73px;
+}
+nav img
+{
+	width: 100px;
+	height:100px;
+	margin-bottom: 1rem;
+	margin-top: 2rem;
+}
+nav h1
+{
+	color: #f1f1f1 !important;
+	font-size:12pt;
+	margin-bottom: 1.2rem;
+}
+nav hr
+{
+	background: #3b4251;
+	width: 70%;
+}
+nav ul
+{
+	width: 100%;
+}
+nav li
+{
+	color: #f1f1f1 !important;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1rem;
+	margin:0;
+}
+nav li:hover
+{
+	border-left: 3px solid #2278AA;
+	background: #3b4251;
+	cursor: pointer;
+}
+nav li i
+{
+	color: #f1f1f1 !important;
+	margin-right: 5%;
+}
+#card_ctd
+{
+	margin-top: 1rem;
+	padding-top: 90px;
+	transition: all 0.5s ease;
+}
+@media (max-width: 992px) {
+	 .hidden-md-down{
+	    display: none !important;
+	 }
+  	nav
+	{
+		height: auto;
+	}
+	nav ul
+	{
+		margin-top: 1rem;
+		text-align: center;
+	}
+	nav ul li
+	{
+		display: inline;
+		margin-right: 1%;
+		padding-right: 1.5%;
+		padding-left: 1.5%;
+	}
+	nav li i
+	{
+		margin-right: 1%;
+	}
+	nav li:hover
+	{
+		border-bottom: 3px solid #2278AA;
+		border-left: 0;
+	}
+}
+@media (min-width: 992px)
+{
+	.navbar-expand-lg .navbar-collapse {
+    	display: block !important;
+	}
+
+	.navbar-toggler {
+    	display: none;
+	}
+	.collapse:not(.show) {
+    	display: inline-block;
+	}
+
+}
+@media (min-width: 576px)
+{
+	.card-group>.card+.card {
+	    margin-left: 1rem;
+	    border-left: 1px solid rgba(0,0,0,.125);
+	}
+	.card-group>.card:not(:last-child) {
+	    border-top-right-radius: .25rem;
+	    border-bottom-right-radius: .25rem;
+	}
+	.card-group>.card:not(:first-child) {
+	    border-top-left-radius: .25rem;
+	    border-bottom-left-radius: .25rem;
+	}
+}
+
+
+ 
