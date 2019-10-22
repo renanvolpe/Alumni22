@@ -10,6 +10,8 @@
 		<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 		<link rel="stylesheet" type="text/css" href="../css/perfil.css">
 		<link href="../icones/css/all.css" rel="stylesheet">
+
+		<meta charset="utf-8">
 	</head>
 	
 	<body>
@@ -24,9 +26,9 @@
 							<hr>
 						</div>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-user"></i><a href="index.html"> Dados pessoais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-file"></i> <a href="indexAcademico.html"> Dados acadêmicos </a><i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-briefcase"></i> <a href="indexProfissional.html">Dados profissionais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
+							<li><i class="fas fa-user"></i><a href="index.php"> Dados pessoais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
+							<li><i class="fas fa-file"></i> <a href="indexAcademico.php"> Dados acadêmicos </a><i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
+							<li><i class="fas fa-briefcase"></i> <a href="indexProfissional.php">Dados profissionais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
 						</ul>
 					</div>
 				</nav>
