@@ -18,8 +18,8 @@
 		<div class="container-fluid">
 			
 			<div class="row">
-				<nav class="col-sm-12 col-lg-2 navbar-expand-lg hidden-md-down navMobile fixed-top" style="padding:0; position: absolute; position-top:0px; ">
-					<div class="collapse navbar-collapse navMobile ">
+				<nav class="col-sm-12 col-lg-2 fixed-top" style="padding:0; position: absolute; position-top:0px; ">
+					<div class="navMobile ">
 						<div class="text-center hidden-md-down">
 							<img src="../img/user.svg" class="rounded-circle">
 							<h1>Nome do Usuário</h1>
@@ -44,14 +44,14 @@
 								<h4>Nome do Usuário</h4>
 							</div>
 
-							<h1 class="col-md-12 text-center">Dados Profissionais: </h1>
+							<h1 class="col-md-12 text-center">Dados Profissionais</h1>
 								<hr>
 
 							<div class="col-md-6 offset-md-4 offset-md-4 offset-sm-3"> 
 
 								
 
-								<ul class="nav nav-pills text-center" role="tab-list">
+								<ul class="nav nav-pills text-center" align="center" role="tab-list">
       								<li class="nav-item">
         								<a class="nav-link active" id="nav-meusDados-tab" data-toggle="tab" href="#meusDados" role="tab" aria-controls="nav-meusDados" aria-selected="true">
         									<i class="fas fa-user" style="margin-bottom: 0.5rem;"></i> Meus Dados

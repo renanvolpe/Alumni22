@@ -18,8 +18,8 @@
 		<div class="container-fluid">
 			
 			<div class="row">
-				<nav class="col-sm-12 col-lg-2 navbar-expand-lg hidden-md-down navMobile fixed-top" style="padding:0; position: absolute; position-top:0px; ">
-					<div class="collapse navbar-collapse navMobile ">
+				<nav class="col-sm-12 col-lg-2 fixed-top" style="padding:0; position: absolute; position-top:0px; ">
+					<div class="navMobile ">
 						<div class="text-center hidden-md-down">
 							<img src="../img/user.svg" class="rounded-circle">
 							<h1>Nome do Usuário</h1>
@@ -44,7 +44,7 @@
 								<h4>Nome do Usuário</h4>
 							</div>
 
-							<h1 class="col-md-12 text-center">Dados Academicos: </h1>
+							<h1 class="col-md-12 text-center">Dados Academicos</h1>
 								<hr>
 
 							<div class="col-md-6 offset-md-4 offset-md-4 offset-sm-3"> 

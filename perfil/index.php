@@ -16,10 +16,10 @@
 	
 	<body>
 		<div class="container-fluid">
-			
+	</nav>			
 			<div class="row">
-				<nav class="col-sm-12 col-lg-2 navbar-expand-lg hidden-md-down navMobile fixed-top" style="padding:0; position: absolute; position-top:0px; ">
-					<div class="collapse navbar-collapse navMobile ">
+				<nav class="col-sm-12 col-lg-2  fixed-top" style="padding:0; position: absolute; position-top:0px; ">
+					<div class="navMobile">
 						<div class="text-center hidden-md-down">
 							<img src="../img/user.svg" class="rounded-circle">
 							<h1>Nome do Usuário</h1>
@@ -31,7 +31,8 @@
 							<li><i class="fas fa-briefcase"></i> <a href="indexProfissional.php">Dados profissionais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
 						</ul>
 					</div>
-				</nav>
+					</div>
+			
 				
 				<div class="col-lg-10 offset-lg-2 mg-bt" id="card_ctd"  style=" padding-top: 0px; transition: all 0.5s ease;">
 					<div class="card">
@@ -44,7 +45,7 @@
 								<h4>Nome do Usuário</h4>
 							</div>
 
-							<h1 class="col-md-12 text-center">Dados Pessoais: </h1>
+							<h1 class="col-md-12 text-center">Dados Pessoais </h1>
 								<hr>
 
 							<div class="col-md-6 offset-md-4 offset-md-4 offset-sm-3"> 
