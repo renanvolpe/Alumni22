@@ -34,13 +34,13 @@
 					</div>
 			
 				
-				<div class="col-lg-10 offset-lg-2 mg-bt" id="card_ctd"  style=" padding-top: 0px; transition: all 0.5s ease;">
+				<div class="bcol-lg-10 offset-lg-2 mg-bt" id="card_ctd"  style=" padding-top: 0px; transition: all 0.5s ease;">
 					<div class="card">
 						<div class="card-body">
 							<img src="../img/images.png" class="card-img fd-perfil" alt="...">
 							<div class="card-img-overlay text-center">
 								<div class="col-md-2 offset-md-5 col-sm-3 offset-sm-4 col-lg-2 offset-lg-5">
-									<img src="../img/user.svg" class="rounded-circle" style="width: 100%;">
+									<img src="../img/user.svg" class="rounded-circle" style="width: 50%;">
 								</div>
 								<h4>Nome do Usuário</h4>
 							</div>
