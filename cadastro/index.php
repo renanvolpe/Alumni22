@@ -1,3 +1,62 @@
+<?php
+session_start();
+
+require '../conexaoBanco.php';
+
+if (isset($_POST['cpfaluno']) && empty($_POST['cpfaluno']) == false) {
+	
+	$cpfaluno = addslashes($_POST['cpfaluno']);
+	$enderecocampus = addslashes($_POST['enderecocampus']);
+
+
+	$procura_ID_CPF = "SELECT * FROM matricula WHERE cpfaluno = '$cpfaluno' ";	
+
+		$procura_ID_CPF = $pdo->query($procura_ID_CPF);
+
+
+		foreach ($procura_ID_CPF->fetchAll() as $valores):
+
+
+				?>
+			
+			 
+				<div class="comentarioPessoas">
+					
+						<h2>idCampus:
+						<?php echo $valores['idCampus'];?> 
+						</h2>
+						
+						
+
+
+				
+
+				</div>
+				
+					
+			<?php
+
+		endforeach;
+
+		$_SESSION['banco'] = $comentario['idCampus'];
+		
+		header("Location: finalizarCadastro.php");
+			/*
+	$procura_ID_Campus = "SELECT E.idCampus FROM enderecocampus AS E, cidade AS C WHERE C.id =  E.idCidade ";
+
+
+
+	
+
+		
+		*/
+
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,18 +82,18 @@
 						<p>Encontre ex-alunos e estabeleça contato pessoal e profissional.</p>
 					</div>
 					<div class="card-body">
-						<form class="mg-t-3">
+						<form class="mg-t-3" method="POST">
 							<div class="col-12 my-1 mt-4">
 						      	<label class="sr-only" for="email">CPF</label>
 						      	<div class="input-group rounded-pill border">
 						        	<div class="input-group-prepend">
 						          		<div class="input-group-text border-0 bg-transparent"><i class="far fa-id-card"></i></div>
 						        	</div>
-						        	<input type="text" class="form-control border-0 rounded-pill" id="cpf" name="cpf" placeholder="Digite seu CPF" required="" onkeypress="$(this).mask('000.000.000-00');">
+						        	<input type="text" class="form-control border-0 rounded-pill" id="cpf" name="cpfaluno" placeholder="Digite seu CPF" required="" >
 						      	</div>
 						    </div>
 						    <div class="col-12 my-1 mt-4 mb-2">
-						      	<select class="form-control rounded-pill" name="campus" id="campus">
+						      	<select class="form-control rounded-pill" name="enderecocampus" id="campus">
 						      		<option>Escolha seu campus</option>
 						      		<option>Jacareí</option>
 						      	</select>

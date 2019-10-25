@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+require '../conexaoBanco.php';
+
+if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
+		# code...
+	} else {
+		header("Location: index.php");
+		exit;
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
