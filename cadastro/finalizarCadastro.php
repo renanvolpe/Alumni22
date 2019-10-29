@@ -4,7 +4,22 @@ session_start();
 require '../conexaoBanco.php';
 
 if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
-		# code...
+
+		$matricula = $_SESSION['banco'];
+
+		$Pega_CPF = "SELECT * FROM matricula WHERE prontuario = '$matricula' ";
+
+		$Pega_CPF = $pdo->query($Pega_CPF);
+
+
+		foreach ($Pega_CPF->fetchAll() as $valor):
+			
+			
+			$ValorCPF = $valor['cpfaluno'];
+
+		endforeach;
+
+		
 	} else {
 		header("Location: index.php");
 		exit;
@@ -91,7 +106,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="far fa-id-card"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="cpf" name="cpf" placeholder="Digite seu CPF" required="" readonly="">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="cpf" name="cpf" placeholder="<?php echo $ValorCPF; ?>" required="" readonly="">
 							      	</div>
 							    </div>
 							</div>
