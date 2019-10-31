@@ -3,7 +3,7 @@
 
 $dsn = "mysql:dbname=alumni;host=localhost";
 $dbuser = "root";
-$dbpass="Renan123";
+$dbpass="";
 
 
 

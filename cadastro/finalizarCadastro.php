@@ -19,6 +19,21 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 
 		endforeach;
 
+		$pegaNome = "SELECT U.nome FROM matricula as M, usuarioaluno as U where M.cpfaluno = U.cpf  and prontuario ='$matricula' ";
+
+		$pegaNome = $pdo->query($pegaNome);
+
+
+		foreach ($pegaNome->fetchAll() as $valor):
+			
+			
+			$pegaNome = $valor['nome'];
+
+		endforeach;
+
+
+
+
 		
 	} else {
 		header("Location: index.php");
@@ -55,21 +70,14 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 					<div class="card-body">
 						<form class="mt-3">
 							<div class="form-row">
-								<div class="col-6 my-1 mt-4">
-							      	<div class="input-group rounded-pill border">
-							        	<div class="input-group-prepend">
-							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-user"></i></div>
-							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="nome" name="nome" placeholder="Digite seu nome" required="">
-							      	</div>
-							    </div>
+								
 
-							    <div class="col-6 my-1 mt-4">
+							    <div class="col-12 my-1 mt-4">
 							      	<div class="input-group rounded-pill border">
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-user"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome" required="">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="sobrenome" name="sobrenome" placeholder="<?php echo $pegaNome ?> " readonly="" required="">
 							      	</div>
 							    </div>
 							</div>
@@ -80,24 +88,110 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-calendar-alt"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="dataNasc" name="dataNasc" placeholder="Digite sua data de nascimento" required="" onkeypress="$(this).mask('00/00/0000');">
+							        	<input id="date" type="date"class="form-control border-0 rounded-pill">
 							      	</div>
 							    </div>
 							    <div class="col-6 my-1 mt-4 mb-2">
-							      	<select class="form-control rounded-pill" name="campus" id="campus">
+							      	<select class="form-control rounded-pill" name="campus" id="campus" required="">
 							      		<option>Escolha seu gênero</option>
 							      		<option>Feminino</option>
+							      		<option>Masculino</option>
 							      	</select>
 							    </div>
 							</div>
+							<div class="form-row">
+								
 
+							    <div class="col-6 my-1 mt-4">
+							      	<div class="input-group rounded-pill border">
+							        	<div class="input-group-prepend">
+							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
+							        	</div>
+							        	<input type="text" class="form-control border-0 rounded-pill" id="cep" name="cep" placeholder="Digite seu CEP"  required="" onkeypress="mask(this,'00000-000')" maxlength="8">
+							        </div>
+							    </div>
+							      <div class="col-6 my-1 mt-4">
+							      	<div class="input-group rounded-pill border">
+							        	<div class="input-group-prepend">
+							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
+							        	</div>
+							        	<input type="text" class="form-control border-0 rounded-pill" id="logradouro" name="logradouro" placeholder="Logradouro"  maxlength="">
+							        </div>
+							    </div>
+							</div>
+							<div class="form-row">
+								
+
+							    <div class="col-6 my-1 mt-4">
+							      	<div class="input-group rounded-pill border">
+							        	<div class="input-group-prepend">
+							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
+							        	</div>
+							        	<input type="text" class="form-control border-0 rounded-pill" id="bairro" name="bairro" placeholder="Bairro"  required="" onkeypress="" maxlength="">
+							        </div>
+							    </div>
+							     <div class="col-6 my-1 mt-4">
+							      	<div class="input-group rounded-pill border">
+							        	<div class="input-group-prepend">
+							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
+							        	</div>
+							        	<input type="text" class="form-control border-0 rounded-pill" id="numero" name="numero" placeholder= "Número"  required="required" 		 onkeypress="" maxlength="4">
+							        </div>
+							    </div>
+							</div>
+							<div class="form-row">
+								
+
+							    <div class="col-6 my-1 mt-4 mb-2">
+							      	<select class="form-control rounded-pill" name="estado" id="estado">
+							      		
+							      		<option value="0">Selecione o Estado</option>
+										<option value="ac">Acre</option>
+										<option value="al">Alagoas</option>
+										<option value="ap">Amapá</option>
+										<option value="am">Amazonas</option>
+										<option value="ba">Bahia</option>
+										<option value="ce">Ceará</option>
+										<option value="df">Distrito Federal</option>
+										<option value="es">Espirito Santo</option>
+										<option value="go">Goiás</option>
+										<option value="ma">Maranhão</option>
+										<option value="ms">Mato Grosso do Sul</option>
+										<option value="mt">Mato Grosso</option>
+										<option value="mg">Minas Gerais</option>
+										<option value="pa">Pará</option>
+										<option value="pb">Paraíba</option>
+										<option value="pr">Paraná</option>
+										<option value="pe">Pernambuco</option>
+										<option value="pi">Piauí</option>
+										<option value="rj">Rio de Janeiro</option>
+										<option value="rn">Rio Grande do Norte</option>
+										<option value="rs">Rio Grande do Sul</option>
+										<option value="ro">Rondônia</option>
+										<option value="rr">Roraima</option>
+										<option value="sc">Santa Catarina</option>
+										<option value="sp">São Paulo</option>
+										<option value="se">Sergipe</option>
+										<option value="to">Tocantins</option>
+							      	</select>
+							    </div>
+							<div class="col-6 my-1 mt-4">
+							      	<div class="input-group rounded-pill border">
+							        	<div class="input-group-prepend">
+							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
+							        	</div>
+							        	<input type="text" class="form-control border-0 rounded-pill" id="cidade" name="cidade" placeholder="Cidade"  required="" onkeypress="" maxlength="">
+							        </div>
+							    </div>
+							</div>
+							
 							<div class="form-row">
 								<div class="col-6 my-1 mt-4">
 							      	<div class="input-group rounded-pill border">
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="far fa-id-card"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="rg" name="rg" placeholder="Digite seu RG" required="" onkeypress="$(this).mask('00.000.000-A');">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="rg" name="rg" placeholder="Digite seu RG" required="" onkeypress="mask('00.000.000-A')" maxlength="9" size="9">
 							      	</div>
 							    </div>
 

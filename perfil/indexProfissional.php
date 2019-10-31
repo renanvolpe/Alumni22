@@ -39,7 +39,7 @@
 							<img src="../img/images.png" class="card-img fd-perfil" alt="...">
 							<div class="card-img-overlay text-center">
 								<div class="col-md-2 offset-md-5 col-sm-3 offset-sm-4 col-lg-2 offset-lg-5">
-									<img src="../img/user.svg" class="rounded-circle" style="width: 100%;">
+									<img src="../img/user.svg" class="rounded-circle" style="width: 50%;">
 								</div>
 								<h4>Nome do Usuário</h4>
 							</div>
