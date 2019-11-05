@@ -21,7 +21,7 @@
 				<nav class="col-sm-12 col-lg-2 fixed-top" style="padding:0; position: absolute; position-top:0px; ">
 					<div class="navMobile ">
 						<div class="text-center hidden-md-down">
-							<img src="../img/user.svg" class="rounded-circle">
+							<img src="../img/user.svg" class="rounded-circle" style="width: 10%;">
 							<h1>Nome do Usuário</h1>
 							<hr>
 						</div>
