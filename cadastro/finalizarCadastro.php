@@ -32,6 +32,99 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 		endforeach;
 
 
+		$emailAluno = addslashes($_POST['emailAluno']);
+		$confirmaSenha = md5(addslashes($_POST['confirmaSenhaAluno']));
+		$senha = md5(addslashes($_POST['SenhaAluno']));
+
+		
+
+		if (isset($_POST['emailAluno']) && empty($_POST['emailAluno']) == false && $_POST['confirmaSenhaAluno'] == $_POST['SenhaAluno']) {
+
+			
+		
+			//$UFestadoAluno = addslashes($_POST['estadoAluno']);
+			$UFestadoAluno = "SP";
+			$cidadeAluno = addslashes($_POST['cidadeAluno']);
+			//$cidadeAluno = "jacarei";
+			
+			$GeneroALuno = addslashes($_POST['GeneroALuno']);
+			
+			$dataNascAluno  = addslashes($_POST['dataNascAluno']);
+
+
+
+			$rgAluno = addslashes($_POST['rgAluno']);
+			$cepAluno = addslashes($_POST['cepAluno']);
+			$numeroAluno = addslashes($_POST['numeroAluno']);
+			$ruaAluno = addslashes($_POST['ruaAluno']);
+			$bairroAluno = addslashes($_POST['bairroAluno']);
+			$complementoAluno = addslashes($_POST['complementoAluno']);
+
+
+
+		
+		
+
+
+			// recebe o id de genero que vai ser inserido na tabela usuarioaluno do banco alumni
+			$Idsexo = $pdo->prepare('SELECT id FROM genero WHERE  genero = :GeneroALuno ');
+			$Idsexo->bindValue(':GeneroALuno', $GeneroALuno);
+
+
+			$RecebeIdGenero = $Idsexo->execute();
+
+			
+			
+
+			//Recebe a sigla do estado e guarda na variavel o id que esse estado representa
+			$idEstado = $pdo->prepare('SELECT id from estado WHERE uf = :UFestadoAluno ') ;
+			$idEstado->bindValue(':UFestadoAluno', $UFestadoAluno);
+
+			$RecebeIdEstado =  $idEstado->execute();
+
+
+			echo "<br>
+			Genero: $GeneroALuno com id : $RecebeIdGenero - $UFestadoAluno com id: $RecebeIdEstado ";
+
+
+			
+			
+
+			//Recebe o id da cidae pelo estado
+			$IdCidade = $pdo->prepare('SELECT cidade.id from estado, cidade WHERE cidade.idEstado = estado.id and estado.id = :RecebeIdEstado and cidade.cidade = :cidadeAluno ');
+			$IdCidade->bindValue(':RecebeIdEstado', $RecebeIdEstado);
+			$IdCidade->bindValue(':cidadeAluno', $cidadeAluno);
+
+			$recebeIdCidade =  $IdCidade->execute();
+
+
+			//insere login e senha
+			$InsereLogin = "INSERT INTO login(email,senha, idTipoUsuario) VALUES('$emailAluno','$senha ','60' ) ";
+
+			$pdo->query($InsereLogin);
+
+
+
+			$IdLogin = $pdo->prepare('SELECT id from login where email = :emailAluno AND senha = :senha ');
+			$IdLogin->bindValue(':senha', $senha);
+			$IdLogin->bindValue(':emailAluno', $emailAluno);
+
+			$RecebeIdLogin =  $IdLogin->execute();
+
+
+			$InsereEndereco = "INSERT INTO enderecoaluno values('$ValorCPF','$recebeIdCidade','$ruaAluno','$bairroAluno','$numeroAluno','$cepAluno' ) ";
+
+				$pdo->query($InsereEndereco);
+
+
+
+
+			$AtualizaRG_DataNasc_Genero_dataNasc_login = "UPDATE usuarioaluno SET dataNasc = '$dataNascAluno', rg = '$rgAluno', idGenero = '$RecebeIdGenero', idLogin = '$RecebeIdLogin'  WHERE cpf = '$ValorCPF' ";
+
+				$pdo->query($AtualizaRG_DataNasc_Genero_dataNasc_login);
+
+	}
+
 
 
 		
@@ -68,7 +161,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 						<p>Encontre ex-alunos e estabeleça contato pessoal e profissional.</p>
 					</div>
 					<div class="card-body">
-						<form class="mt-3">
+						<form class="mt-3" method="POST">
 							<div  class="text-center hidden-md-down">
 							<img src="../img/user.svg" class="rounded-circle" style="width: 25%;">
 							</div>
@@ -90,11 +183,11 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-calendar-alt"></i></div>
 							        	</div>
-							        	<input id="date" type="date"class="form-control border-0 rounded-pill">
+							        	<input id="date" type="date"class="form-control border-0 rounded-pill" name="dataNascAluno">
 							      	</div>
 							    </div>
 							    <div class="col-6 my-1 mt-4 mb-2">
-							      	<select class="form-control rounded-pill" name="campus" id="campus" required="">
+							      	<select class="form-control rounded-pill" name="GeneroALuno" id="campus" required="">
 							      		<option>Escolha seu gênero</option>
 							      		<option>Feminino</option>
 							      		<option>Masculino</option>
@@ -184,7 +277,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
 							        	</div>
 							        	<label for="cep"></label>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="cep" name="cep" value="" placeholder="Digite seu CEP"  required="" onkeypress="mask(this,'00000-000')" maxlength="8"  onblur="pesquisacep(this.value)" >
+							        	<input type="text" class="form-control border-0 rounded-pill" id="cep" name="cepAluno" value="" placeholder="Digite seu CEP"  required="" onkeypress="mask(this,'00000-000')" maxlength="8"  onblur="pesquisacep(this.value)" >
 							        </div>
 							    </div>
 							
@@ -193,7 +286,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="rua" name="rua" placeholder="Rua" required class="form-control" maxlength="" onkeypress="">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="rua" name="ruaAluno" placeholder="Rua" required class="form-control" maxlength="" onkeypress="">
 							        </div>
 							    </div>
 							</div>
@@ -205,7 +298,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="bairro" name="bairro" placeholder="Bairro"  required="" onkeypress="" maxlength="">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="bairro" name="bairroAluno" placeholder="Bairro"  required="" onkeypress="" maxlength="">
 							        </div>
 							    </div>
 							     <div class="col-6 my-1 mt-4">
@@ -213,7 +306,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="numero" name="numero" placeholder= "Número"  required="required"
+							        	<input type="text" class="form-control border-0 rounded-pill" id="numero" name="numeroAluno" placeholder= "Número"  required="required"
 							        	 onkeypress="" maxlength="4">
 							        </div>
 							    </div>
@@ -223,7 +316,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-map-marker-alt"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="complemento" name="complemento" placeholder="Complemento" >
+							        	<input type="text" class="form-control border-0 rounded-pill" id="complemento" name="complementoAluno" placeholder="Complemento" >
 							      	</div>
 							    </div>
 							
@@ -280,7 +373,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="far fa-id-card"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="rg" name="rg" placeholder="Digite seu RG" required="" onkeypress="mask('00.000.000-A')" maxlength="9" size="9">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="rg" name="rgAluno" placeholder="Digite seu RG" required="" onkeypress="mask('00.000.000-A')" maxlength="9" size="9">
 							      	</div>
 							    </div>
 
@@ -289,7 +382,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="far fa-id-card"></i></div>
 							        	</div>
-							        	<input type="text" class="form-control border-0 rounded-pill" id="cpf" name="cpf" placeholder="<?php echo $ValorCPF; ?>" required="" readonly="">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="cpf" name="cpfaluno" placeholder="<?php echo $ValorCPF; ?>" required="" readonly="">
 							      	</div>
 							    </div>
 							</div>
@@ -300,7 +393,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-envelope"></i></div>
 							        	</div>
-							        	<input type="email" class="form-control border-0 rounded-pill" id="email" name="email" placeholder="Digite seu email" required="">
+							        	<input type="text" class="form-control border-0 rounded-pill" id="email" name="emailAluno" placeholder="Digite seu email" required="">
 							      	</div>
 							    </div>
 							</div>
@@ -311,7 +404,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-lock"></i></div>
 							        	</div>
-							        	<input type="password" class="form-control border-0 rounded-pill" id="senha" name="nome" placeholder="Digite uma senha" required="">
+							        	<input type="password" class="form-control border-0 rounded-pill" id="senha" name="SenhaAluno" placeholder="Digite uma senha" required="">
 							      	</div>
 							    </div>
 
@@ -320,7 +413,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							        	<div class="input-group-prepend">
 							          		<div class="input-group-text border-0 bg-transparent"><i class="fas fa-lock"></i></div>
 							        	</div>
-							        	<input type="password" class="form-control border-0 rounded-pill" id="confirmaSenha" name="confirmaSenha" placeholder="Confirmar senha" required="">
+							        	<input type="password" class="form-control border-0 rounded-pill" id="confirmaSenha" name="confirmaSenhaAluno" placeholder="Confirmar senha" required="">
 							      	</div>
 							    </div>
 							</div>
