@@ -1,3 +1,49 @@
+<?php
+session_start();
+
+require '../conexaoBanco.php';
+
+if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
+
+	
+
+	$matricula = $_SESSION['banco'];
+
+
+
+
+		$Pega_CPF = "SELECT * FROM matricula WHERE prontuario = '$matricula' ";
+
+		$Pega_CPF = $pdo->query($Pega_CPF);
+
+
+		foreach ($Pega_CPF->fetchAll() as $valor):
+			
+			
+			$ValorCPF = $valor['cpfaluno'];
+
+		endforeach;
+
+
+			$pegaNome = "SELECT U.nome FROM matricula as M, usuarioaluno as U where M.cpfaluno = U.cpf  and prontuario ='$matricula' ";
+
+		$pegaNome = $pdo->query($pegaNome);
+
+
+		foreach ($pegaNome->fetchAll() as $valor):
+			
+			
+			$pegaNome = $valor['nome'];
+
+		endforeach;
+
+
+
+	} else{
+		header("Location: ../login/index.php");
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -76,7 +122,7 @@
   									<div class="row">
 										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
 											<h6><i class="fas fa-user-circle"></i> Nome</h6>
-											<p>Nome + Sobrenome do usuário</p>
+											<p><?php echo "$pegaNome"; ?></p>
 										</div>
 										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
 											<h6><i class="fas fa-calendar"></i> Data de Nascimento</h6>
@@ -100,7 +146,7 @@
 										</div>
 										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
 											<h6><i class="fas fa-id-card"></i> CPF</h6>
-											<p>CPF do usuário</p>
+											<p><?php echo "$ValorCPF"; ?></p>
 										</div>
 									</div>
 									<div class="row">

@@ -3,7 +3,10 @@ session_start();
 
 require '../conexaoBanco.php';
 
+if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 
+	header("Location: finalizarCadastro.php");
+}
 
 
 if(isset($_POST['cpfaluno']) && empty($_POST['cpfaluno']) == false) {

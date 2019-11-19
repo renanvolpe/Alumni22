@@ -1,3 +1,35 @@
+<?php
+session_start();
+
+require '../conexaoBanco.php';
+
+if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
+
+	
+
+
+
+	$matricula = $_SESSION['banco'];
+
+		$Pega_CPF = "SELECT * FROM matricula WHERE prontuario = '$matricula' ";
+
+		$Pega_CPF = $pdo->query($Pega_CPF);
+
+
+		foreach ($Pega_CPF->fetchAll() as $valor):
+			
+			
+			$ValorCPF = $valor['cpfaluno'];
+
+		endforeach;
+
+
+		
+	} else{
+		header("Location: ../login/index.php");
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>

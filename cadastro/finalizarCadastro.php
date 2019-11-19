@@ -421,6 +421,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 						    <button class="btn col-8 offset-2 btn-alumni rounded-pill mt-4 mb-2">Finalizar <i class="fas fa-chevron-right ml-2"></i></button>
 						</form>
 						<p class="text-center mg-t-3 text-blue">Já possuo conta: Fazer Login</p>
+						<p class="text-center mg-t-3 text-blue"><a href="../php/sair.php">Sair</a></p>
 					</div>
 				</div>
 			</div>
