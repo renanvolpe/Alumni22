@@ -3,10 +3,7 @@ session_start();
 
 require '../conexaoBanco.php';
 
-if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 
-	header("Location: finalizarCadastro.php");
-}
 
 
 if(isset($_POST['cpfaluno']) && empty($_POST['cpfaluno']) == false) {
@@ -87,7 +84,7 @@ Cu.idCampus = C.id AND C.id = E.idCampus AND E.idCidade = Cid.id AND Cid.idEstad
 
 		<div class="container" >
 			<div class="row justify-content-center">
-				<div class="col-md-5 card border-0 pr-0 pl-0 shadow pb-2 mg-t-5 mb-4">
+				<div class="col-lg-5 col-md-6 col-sm-9 col-10 card border-0 pr-0 pl-0 shadow pb-2 mg-t-5 mb-4">
 					<div class="card-header pl-4 border-0" id="cardLogin">
 						<h3>Cadastre-se no Alumni</h3>
 						<p>Encontre ex-alunos e estabeleça contato pessoal e profissional.</p>
@@ -117,7 +114,7 @@ Cu.idCampus = C.id AND C.id = E.idCampus AND E.idCidade = Cid.id AND Cid.idEstad
 						    <input type="submit" value="Prosseguir" class="btn col-8 offset-2 btn-alumni rounded-pill mt-4 mb-2">
 						</form>
 
-						<p class="text-center mg-t-3 text-blue">Já possuo conta: <a href="#">Fazer Login</a></p>
+						<p class="text-center mg-t-3 text-blue">Já possuo conta: <a href="../login/index.php">Fazer Login</a></p>
 					</div>
 				</div>
 			</div>

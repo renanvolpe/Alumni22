@@ -1,49 +1,3 @@
-<?php
-session_start();
-
-require '../conexaoBanco.php';
-
-if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
-
-	
-
-	$matricula = $_SESSION['banco'];
-
-
-
-
-		$Pega_CPF = "SELECT * FROM matricula WHERE prontuario = '$matricula' ";
-
-		$Pega_CPF = $pdo->query($Pega_CPF);
-
-
-		foreach ($Pega_CPF->fetchAll() as $valor):
-			
-			
-			$ValorCPF = $valor['cpfaluno'];
-
-		endforeach;
-
-
-			$pegaNome = "SELECT U.nome FROM matricula as M, usuarioaluno as U where M.cpfaluno = U.cpf  and prontuario ='$matricula' ";
-
-		$pegaNome = $pdo->query($pegaNome);
-
-
-		foreach ($pegaNome->fetchAll() as $valor):
-			
-			
-			$pegaNome = $valor['nome'];
-
-		endforeach;
-
-
-
-	} else{
-		header("Location: ../login/index.php");
-	}
-
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -72,9 +26,9 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							<hr>
 						</div>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-user"></i><a href="index.php"> Dados pessoais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-file"></i> <a href="indexAcademico.php"> Dados acadêmicos </a><i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-briefcase"></i> <a href="indexProfissional.php">Dados profissionais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
+							<a href="index.php"><li><i class="fas fa-user"></i> Dados pessoais <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
+							<a href="indexAcademico.php"><li><i class="fas fa-file"></i>Dados acadêmicos<i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
+							<a href="indexProfissional.php"><li><i class="fas fa-briefcase"></i> Dados profissionais <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
 						</ul>
 					</div>
 					</div>
@@ -122,7 +76,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
   									<div class="row">
 										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
 											<h6><i class="fas fa-user-circle"></i> Nome</h6>
-											<p><?php echo "$pegaNome"; ?></p>
+											<p>Nome + Sobrenome do usuário</p>
 										</div>
 										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
 											<h6><i class="fas fa-calendar"></i> Data de Nascimento</h6>
@@ -146,7 +100,7 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 										</div>
 										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
 											<h6><i class="fas fa-id-card"></i> CPF</h6>
-											<p><?php echo "$ValorCPF"; ?></p>
+											<p>CPF do usuário</p>
 										</div>
 									</div>
 									<div class="row">
@@ -167,19 +121,17 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 
   								<div class="tab-pane fade" id="editarDados" role="tabpanel" aria-labelledby="nav-editarDados-tab">
   									<form>
-  										<h1>Editar dados: </h1>
+  										
   										<div class="tab-pane fade show active" id="meusDados" role="tabpanel" aria-labelledby="nav-meusDados-tab">
   									
   									<div class="row">
 										
 										<div class="col-md-4 offset-md-1 mg-bt">
 											<h6><i class="fas fa-user-circle"></i> Nome</h6>
-											
-											
 											<input type="text" name="Nome_SobreNome" class="EntradaPerfil" id="EntradaPerfilNome" placeholder ="Nome e Sobrenome">
 										</div>
 
-										<div class="col-md-4 offset-md-2  ">
+										<div class="col-md-4 offset-md-2 mg-bt">
 
 											<h6><i class="fas fa-calendar"></i> Data de Nascimento</h6>
 
@@ -199,23 +151,23 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
+										<div class="col-md-4 offset-md-1 mg-bt">
 											<h6><i class="fas fa-id-card"></i> RG</h6>
 											<input type="text" name="RGUsuario" class="EntradaPerfil" id="EntradaPerfilRG" placeholder ="RG">
 										</div>
-										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
+										<div class="col-md-4 offset-md-2 mg-bt">
 											<h6><i class="fas fa-id-card"></i> CPF</h6>
 											<input type="text" name="CPFUsuario" class="EntradaPerfil" id="EntradaPerfilCPF" placeholder ="CPF">
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
+										<div class="col-md-4 offset-md-1 mg-bt">
 											<h6><i class="fas fa-phone"></i> Telefone</h6>
 											<input type="text" name="TelefoneUsuario" class="EntradaPerfil" id="EntradaPerfilTelefone" placeholder ="Telefone">
 										</div>
-										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
+										<div class="col-md-4 offset-md-2 mg-bt">
 											<h6><i class="fas fa-map-marker-alt"></i> Endereço</h6>
-											<input type="text" name="Nome_SobreNome" class="EntradaPerfil" id="EntradaPerfil" placeholder ="Nome e Sobrenome">
+											<input type="text" name="Nome_SobreNome" class="EntradaPerfil" id="EntradaPerfil" placeholder ="Endereço do Usuário">
 										</div>
 									</div>
 

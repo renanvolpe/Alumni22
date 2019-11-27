@@ -46,7 +46,7 @@
 						    <button class="btn col-8 offset-2 btn-alumni rounded-pill mt-4 mb-2">Login</button>
 						</form>
 						<p class="text-center">Esqueci minha senha</p>
-						<p class="text-center mg-t-3 text-blue">Não possuo conta: Registre-se</p>
+						<p class="text-center mg-t-3 text-blue">Não possuo conta: <a href="../cadastro/index.php">Registre-se</a></p>
 					</div>
 				</div>
 			</div>

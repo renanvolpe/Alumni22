@@ -1,35 +1,3 @@
-<?php
-session_start();
-
-require '../conexaoBanco.php';
-
-if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
-
-	
-
-
-
-	$matricula = $_SESSION['banco'];
-
-		$Pega_CPF = "SELECT * FROM matricula WHERE prontuario = '$matricula' ";
-
-		$Pega_CPF = $pdo->query($Pega_CPF);
-
-
-		foreach ($Pega_CPF->fetchAll() as $valor):
-			
-			
-			$ValorCPF = $valor['cpfaluno'];
-
-		endforeach;
-
-
-		
-	} else{
-		header("Location: ../login/index.php");
-	}
-
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,10 +25,10 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 							<h1>Nome do Usuário</h1>
 							<hr>
 						</div>
-						<ul class="list-unstyled">
-							<li><i class="fas fa-user"></i><a href="index.php"> Dados pessoais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-file"></i> <a href="indexAcademico.php"> Dados acadêmicos </a><i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-briefcase"></i> <a href="indexProfissional.php">Dados profissionais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
+							<ul class="list-unstyled">
+							<a href="index.php"><li><i class="fas fa-user"></i> Dados pessoais <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
+							<a href="indexAcademico.php"><li><i class="fas fa-file"></i>Dados acadêmicos<i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
+							<a href="indexProfissional.php"><li><i class="fas fa-briefcase"></i> Dados profissionais <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
 						</ul>
 					</div>
 				</nav>
@@ -106,32 +74,12 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
   									
   									<div class="row">
 										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
-											<h6><i class="fas fa-user-circle"></i> Trabalho Atual: </h6>
+											<h6><i class="fas fa-briefcase"></i> Trabalho Atual: </h6>
 											<p>Trabalho atual</p>
 										</div>
 										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
-											<h6><i class="fas fa-calendar"></i> Data de inicio do trabalho:</h6>
-											<p>ata de inicio do trabalho</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
 											<h6><i class="fas fa-building"></i> Nome da Empresa: </h6>
 											<p>Empresa que está trabalhando</p>
-										</div>
-										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
-											<h6><i class="fas fa-venus-mars"></i> Gênero</h6>
-											<p>Gênero do usuário</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
-											<h6><i class="fas fa-id-card"></i> RG</h6>
-											<p>RG do usuário</p>
-										</div>
-										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
-											<h6><i class="fas fa-id-card"></i> CPF</h6>
-											<p>CPF do usuário</p>
 										</div>
 									</div>
 									<div class="row">
@@ -140,11 +88,10 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 											<p>(XX) XXXXX-XXXX</p>
 										</div>
 										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
-											<h6><i class="fas fa-map-marker-alt"></i> Local de residencia</h6>
-											<p>Local de residencia</p>
+											<h6><i class="fas fa-map-marker-alt"></i> Endereço</h6>
+											<p>Endereço da empresa</p>
 										</div>
 									</div>
-
   								</div>
 
   								
@@ -152,58 +99,31 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 
   								<div class="tab-pane fade" id="editarDados" role="tabpanel" aria-labelledby="nav-editarDados-tab">
   									<form>
-  										<h1>Editar dados: </h1>
   										<div class="tab-pane fade show active" id="meusDados" role="tabpanel" aria-labelledby="nav-meusDados-tab">
   									
   									<div class="row">
 										
 										<div class="col-md-4 offset-md-1 mg-bt">
-											<h6><i class="fas fa-user-circle"></i> Nome</h6>
-											
-											
-											<input type="text" name="Nome_SobreNome" class="EntradaPerfil" id="EntradaPerfilNome" placeholder ="Nome e Sobrenome">
+											<h6><i class="fas fa-briefcase"></i> Trabalho Atual</h6>
+											<input type="text" name="Nome_SobreNome" class="EntradaPerfil" id="EntradaPerfilNome" placeholder ="Trabalho Atual">
 										</div>
 
-										<div class="col-md-4 offset-md-2  ">
-
-											<h6><i class="fas fa-calendar"></i> Data de Nascimento</h6>
-
-											<input type="text" name="DataNascUsuario" class="EntradaPerfil" id="EntradaPerfilNasc" placeholder ="Data de nascimento">
+										<div class="col-md-4 offset-md-2 mg-bt">
+											<h6><i class="fas fa-building"></i> Nome da Empresa</h6>
+											<input type="text" name="DataNascUsuario" class="EntradaPerfil" id="EntradaPerfilNasc" placeholder ="Empresa em que trabalha">
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-4 offset-md-1 mg-bt">
-											<h6><i class="fas fa-envelope"></i> Email</h6>
-											<input type="text" name="EmailUsuario" class="EntradaPerfil" id="EntradaPerfilEmail" placeholder ="E-mail">
+											<h6><i class="fas fa-phone"></i> Telefone</h6>
+											<input type="text" name="EmailUsuario" class="EntradaPerfil" id="EntradaPerfilEmail" placeholder ="(XX) XXXXX-XXXX">
 										</div>
-
 
 										<div class="col-md-4 offset-md-2 mg-bt">
-											<h6><i class="fas fa-venus-mars"></i> Gênero</h6>
-											<input type="text" name="GeneroUsuario" class="EntradaPerfil" id="EntradaPerfilGenero" placeholder ="Genero">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
-											<h6><i class="fas fa-id-card"></i> RG</h6>
-											<input type="text" name="RGUsuario" class="EntradaPerfil" id="EntradaPerfilRG" placeholder ="RG">
-										</div>
-										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
-											<h6><i class="fas fa-id-card"></i> CPF</h6>
-											<input type="text" name="CPFUsuario" class="EntradaPerfil" id="EntradaPerfilCPF" placeholder ="CPF">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-4 offset-md-1 border-bottom mg-bt">
-											<h6><i class="fas fa-phone"></i> Telefone</h6>
-											<input type="text" name="TelefoneUsuario" class="EntradaPerfil" id="EntradaPerfilTelefone" placeholder ="Telefone">
-										</div>
-										<div class="col-md-4 offset-md-2 border-bottom mg-bt">
 											<h6><i class="fas fa-map-marker-alt"></i> Endereço</h6>
-											<input type="text" name="Nome_SobreNome" class="EntradaPerfil" id="EntradaPerfil" placeholder ="Nome e Sobrenome">
+											<input type="text" name="GeneroUsuario" class="EntradaPerfil" id="EntradaPerfilGenero" placeholder ="Endereço da Empresa">
 										</div>
 									</div>
-
   								</div>
   										<button class="btn btn-dark btn-block col-md-10 offset-md-1">
   											Salvar Alterações

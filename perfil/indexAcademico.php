@@ -1,35 +1,3 @@
-<?php
-session_start();
-
-require '../conexaoBanco.php';
-
-if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
-
-	
-
-
-
-	$matricula = $_SESSION['banco'];
-
-		$Pega_CPF = "SELECT * FROM matricula WHERE prontuario = '$matricula' ";
-
-		$Pega_CPF = $pdo->query($Pega_CPF);
-
-
-		foreach ($Pega_CPF->fetchAll() as $valor):
-			
-			
-			$ValorCPF = $valor['cpfaluno'];
-
-		endforeach;
-
-
-		
-	} else{
-		header("Location: ../login/index.php");
-	}
-
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -53,14 +21,14 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 				<nav class="col-sm-12 col-lg-2 fixed-top" style="padding:0; position: absolute; position-top:0px; ">
 					<div class="navMobile ">
 						<div class="text-center hidden-md-down">
-							<img src="../img/user.svg" class="rounded-circle">
+							<img src="../img/user.svg" class="rounded-circle" >
 							<h1>Nome do Usuário</h1>
 							<hr>
 						</div>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-user"></i><a href="index.php"> Dados pessoais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-file"></i> <a href="indexAcademico.php"> Dados acadêmicos </a><i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
-							<li><i class="fas fa-briefcase"></i> <a href="indexProfissional.php">Dados profissionais </a> <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li>
+							<a href="index.php"><li><i class="fas fa-user"></i> Dados pessoais <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
+							<a href="indexAcademico.php"><li><i class="fas fa-file"></i>Dados acadêmicos<i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
+							<a href="indexProfissional.php"><li><i class="fas fa-briefcase"></i> Dados profissionais <i class="fas fa-chevron-right icone-direita hidden-md-down"></i></li></a>
 						</ul>
 					</div>
 				</nav>
@@ -143,19 +111,19 @@ if (isset($_SESSION['banco']) && empty($_SESSION['banco']) == false) {
 
   								<div class="tab-pane fade" id="editarDados" role="tabpanel" aria-labelledby="nav-editarDados-tab">
   									<form>
-  										<h1>Editar dados: </h1>
+  										
   										<div class="tab-pane fade show active" id="meusDados" role="tabpanel" aria-labelledby="nav-meusDados-tab">
   									
   									<div class="row">
 										
 										<div class="col-md-4 offset-md-1 mg-bt">
-											<h6><i class="fas fa-user-circle"></i> Campus de graduação</h6>
+											<h6><i class="fas fa-university"></i> Campus de graduação</h6>
 											
 											
 											<input type="text" name="Nome_SobreNome" class="EntradaPerfil" id="EntradaPerfilNome" placeholder ="Campus de graduação">
 										</div>
 
-										<div class="col-md-4 offset-md-2  ">
+										<div class="col-md-4 offset-md-2 mg-bt">
 
 											<h6><i class="fas  fa-graduation-cap"></i> Cruso de graduação</h6>
 
